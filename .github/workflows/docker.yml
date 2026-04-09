@@ -22,7 +22,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
       # 4️⃣ Build les images avec Docker Compose
       - name: Build Docker Compose
-        run: docker compose -f docker/docker-compose.yml build
+        run: docker compose -f docker/docker-compose.yml build --build-arg CONTEXT=.
 
       # 5️⃣ Push les images Docker Compose
       - name: Push Docker Compose

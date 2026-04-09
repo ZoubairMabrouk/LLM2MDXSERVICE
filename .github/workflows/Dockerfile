@@ -11,13 +11,13 @@ RUN apt-get update && \
 
 # Copier l’application
 WORKDIR /app
-COPY app/ /app/
+COPY ../app/ /app/          # <-- ../app car Dockerfile est dans docker/
 
 # Installer les dépendances Python
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Entrypoint
-COPY docker/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh   # <-- déjà dans le même dossier Dockerfile
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000

@@ -10,7 +10,9 @@ services:
       - ollama_data:/root/.ollama
 
   web:
-    build: .
+    build:
+        context: .
+        dockerfile: Dockerfile
     image: zoubairmabrouk/fastapi-ollama:latest
     depends_on:
       - ollama
