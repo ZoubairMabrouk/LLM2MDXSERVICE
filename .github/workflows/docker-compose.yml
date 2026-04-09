@@ -11,6 +11,7 @@ services:
 
   web:
     build: .
+    image: zoubairmabrouk/fastapi-ollama:latest
     depends_on:
       - ollama
     environment:
