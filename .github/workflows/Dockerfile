@@ -1,29 +1,25 @@
-# === Base ===
+# === Base pour ton backend Python ===
 FROM python:3.12-slim
 
-# === Variables ===
-ENV OL_BASE_URL=http://localhost:11434/v1
-ENV OL_API_KEY=ollama
+# Variables (pas de secret sensible ici)
+ENV OL_BASE_URL=http://ollama:11434/v1
 
-# === Dépendances système ===
+# Dépendances système
 RUN apt-get update && \
-    apt-get install -y curl git wget unzip && \
-    apt-get clean
+    apt-get install -y git curl && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# === Ollama CLI ===
-RUN curl -sSL https://ollama.com/install.sh | bash
-
-# === Copy Python app ===
+# Copier l’application
 WORKDIR /app
 COPY app/ /app/
 
-# === Python dependencies ===
-RUN pip install --no-cache-dir -r requirements.txt
+# Installer les dépendances Python
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# === Entrypoint ===
+# Entrypoint
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 8000 11434
+EXPOSE 8000
 
 CMD ["/entrypoint.sh"]
