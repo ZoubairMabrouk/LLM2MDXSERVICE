@@ -1,0 +1,589 @@
+{
+  "cubeName": "CUBE-DOCUMENT",
+  "connectionString": "Data Source=localhost;Catalog=SalesDB;",
+  "measures": [
+    {
+      "name": "Dim Date",
+      "mdxExpression": "[Measures].[Dim Date]",
+      "aliases": [
+        "dim date"
+      ]
+    },
+    {
+      "name": "Document Dim",
+      "mdxExpression": "[Measures].[Document Dim]",
+      "aliases": [
+        "document dim"
+      ]
+    },
+    {
+      "name": "Tiers Dim",
+      "mdxExpression": "[Measures].[Tiers Dim]",
+      "aliases": [
+        "tiers dim"
+      ]
+    },
+    {
+      "name": "Unique ID",
+      "mdxExpression": "[Measures].[Unique ID]",
+      "aliases": [
+        "unique id"
+      ]
+    },
+    {
+      "name": "Doc Annee",
+      "mdxExpression": "[Measures].[Doc Annee]",
+      "aliases": [
+        "doc annee"
+      ]
+    },
+    {
+      "name": "Doc Punit",
+      "mdxExpression": "[Measures].[Doc Punit]",
+      "aliases": [
+        "doc punit"
+      ]
+    },
+    {
+      "name": "Doc Qte",
+      "mdxExpression": "[Measures].[Doc Qte]",
+      "aliases": [
+        "doc qte"
+      ]
+    },
+    {
+      "name": "Doc Remise",
+      "mdxExpression": "[Measures].[Doc Remise]",
+      "aliases": [
+        "doc remise"
+      ]
+    },
+    {
+      "name": "Doc Qte Prom",
+      "mdxExpression": "[Measures].[Doc Qte Prom]",
+      "aliases": [
+        "doc qte prom"
+      ]
+    },
+    {
+      "name": "Doc Remise Prom",
+      "mdxExpression": "[Measures].[Doc Remise Prom]",
+      "aliases": [
+        "doc remise prom"
+      ]
+    },
+    {
+      "name": "Doc Total HT",
+      "mdxExpression": "[Measures].[Doc Total HT]",
+      "aliases": [
+        "doc total ht"
+      ]
+    },
+    {
+      "name": "Doc Tx Tva",
+      "mdxExpression": "[Measures].[Doc Tx Tva]",
+      "aliases": [
+        "doc tx tva"
+      ]
+    },
+    {
+      "name": "Doc Tx Fodec",
+      "mdxExpression": "[Measures].[Doc Tx Fodec]",
+      "aliases": [
+        "doc tx fodec"
+      ]
+    },
+    {
+      "name": "Doc Total Fodec",
+      "mdxExpression": "[Measures].[Doc Total Fodec]",
+      "aliases": [
+        "doc total fodec"
+      ]
+    },
+    {
+      "name": "Doc Total TTC",
+      "mdxExpression": "[Measures].[Doc Total TTC]",
+      "aliases": [
+        "doc total ttc"
+      ]
+    },
+    {
+      "name": "Doc Long",
+      "mdxExpression": "[Measures].[Doc Long]",
+      "aliases": [
+        "doc long"
+      ]
+    },
+    {
+      "name": "Doc Larg",
+      "mdxExpression": "[Measures].[Doc Larg]",
+      "aliases": [
+        "doc larg"
+      ]
+    },
+    {
+      "name": "Doc Num Ligne",
+      "mdxExpression": "[Measures].[Doc Num Ligne]",
+      "aliases": [
+        "doc num ligne"
+      ]
+    },
+    {
+      "name": "Unique ID Doc",
+      "mdxExpression": "[Measures].[Unique ID Doc]",
+      "aliases": [
+        "unique id doc"
+      ]
+    },
+    {
+      "name": "ID Ligne Ext",
+      "mdxExpression": "[Measures].[ID Ligne Ext]",
+      "aliases": [
+        "id ligne ext"
+      ]
+    },
+    {
+      "name": "Doc P Revient",
+      "mdxExpression": "[Measures].[Doc P Revient]",
+      "aliases": [
+        "doc p revient"
+      ]
+    },
+    {
+      "name": "A Qte Stock",
+      "mdxExpression": "[Measures].[A Qte Stock]",
+      "aliases": [
+        "a qte stock"
+      ]
+    },
+    {
+      "name": "Doc Total Remise",
+      "mdxExpression": "[Measures].[Doc Total Remise]",
+      "aliases": [
+        "doc total remise"
+      ]
+    },
+    {
+      "name": "Doc Total TVA",
+      "mdxExpression": "[Measures].[Doc Total TVA]",
+      "aliases": [
+        "doc total tva"
+      ]
+    },
+    {
+      "name": "Doc Montant",
+      "mdxExpression": "[Measures].[Doc Montant]",
+      "aliases": [
+        "doc montant"
+      ]
+    },
+    {
+      "name": "Doc Neta Payer",
+      "mdxExpression": "[Measures].[Doc Neta Payer]",
+      "aliases": [
+        "doc neta payer"
+      ]
+    },
+    {
+      "name": "Doc Taux Rem",
+      "mdxExpression": "[Measures].[Doc Taux Rem]",
+      "aliases": [
+        "doc taux rem"
+      ]
+    },
+    {
+      "name": "Doc Val Rem",
+      "mdxExpression": "[Measures].[Doc Val Rem]",
+      "aliases": [
+        "doc val rem"
+      ]
+    },
+    {
+      "name": "Doc Tx Devise",
+      "mdxExpression": "[Measures].[Doc Tx Devise]",
+      "aliases": [
+        "doc tx devise"
+      ]
+    },
+    {
+      "name": "Val Timber Fiscal",
+      "mdxExpression": "[Measures].[Val Timber Fiscal]",
+      "aliases": [
+        "val timber fiscal"
+      ]
+    },
+    {
+      "name": "Doc Acompte",
+      "mdxExpression": "[Measures].[Doc Acompte]",
+      "aliases": [
+        "doc acompte"
+      ]
+    },
+    {
+      "name": "Doc Reste",
+      "mdxExpression": "[Measures].[Doc Reste]",
+      "aliases": [
+        "doc reste"
+      ]
+    },
+    {
+      "name": "Doc H Liv",
+      "mdxExpression": "[Measures].[Doc H Liv]",
+      "aliases": [
+        "doc h liv"
+      ]
+    },
+    {
+      "name": "Num Cloture",
+      "mdxExpression": "[Measures].[Num Cloture]",
+      "aliases": [
+        "num cloture"
+      ]
+    },
+    {
+      "name": "Doc Retenu",
+      "mdxExpression": "[Measures].[Doc Retenu]",
+      "aliases": [
+        "doc retenu"
+      ]
+    },
+    {
+      "name": "Doc Projet",
+      "mdxExpression": "[Measures].[Doc Projet]",
+      "aliases": [
+        "doc projet"
+      ]
+    },
+    {
+      "name": "Doc Val Fodec",
+      "mdxExpression": "[Measures].[Doc Val Fodec]",
+      "aliases": [
+        "doc val fodec"
+      ]
+    },
+    {
+      "name": "Document Fact Nombre",
+      "mdxExpression": "[Measures].[Document Fact Nombre]",
+      "aliases": [
+        "document fact nombre"
+      ]
+    }
+  ],
+  "dimensions": [
+    {
+      "name": "[Dim Date]",
+      "hierarchies": [
+        {
+          "name": "Date",
+          "mdxExpression": "[Dim Date].[Date]",
+          "aliases": [
+            "date"
+          ],
+          "membersExpression": "[Dim Date].[Date].Members"
+        },
+        {
+          "name": "Day",
+          "mdxExpression": "[Dim Date].[Day]",
+          "aliases": [
+            "day"
+          ],
+          "membersExpression": "[Dim Date].[Day].Members"
+        },
+        {
+          "name": "Day Name",
+          "mdxExpression": "[Dim Date].[Day Name]",
+          "aliases": [
+            "day name"
+          ],
+          "membersExpression": "[Dim Date].[Day Name].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[dmn]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[dmn].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[Hiérarchie]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[Hiérarchie].Members"
+        },
+        {
+          "name": "Month",
+          "mdxExpression": "[Dim Date].[Month]",
+          "aliases": [
+            "month"
+          ],
+          "membersExpression": "[Dim Date].[Month].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[Month Name]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[Month Name].Members"
+        },
+        {
+          "name": "Quarter",
+          "mdxExpression": "[Dim Date].[Quarter]",
+          "aliases": [
+            "quarter"
+          ],
+          "membersExpression": "[Dim Date].[Quarter].Members"
+        },
+        {
+          "name": "Year",
+          "mdxExpression": "[Dim Date].[Year]",
+          "aliases": [
+            "year"
+          ],
+          "membersExpression": "[Dim Date].[Year].Members"
+        },
+        {
+          "name": "Date",
+          "mdxExpression": "[Dim Date].[Date]",
+          "aliases": [
+            "date"
+          ],
+          "membersExpression": "[Dim Date].[Date].Members"
+        },
+        {
+          "name": "Day",
+          "mdxExpression": "[Dim Date].[Day]",
+          "aliases": [
+            "day"
+          ],
+          "membersExpression": "[Dim Date].[Day].Members"
+        },
+        {
+          "name": "Day Name",
+          "mdxExpression": "[Dim Date].[Day Name]",
+          "aliases": [
+            "day name"
+          ],
+          "membersExpression": "[Dim Date].[Day Name].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[dmn]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[dmn].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[Hiérarchie]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[Hiérarchie].Members"
+        },
+        {
+          "name": "Month",
+          "mdxExpression": "[Dim Date].[Month]",
+          "aliases": [
+            "month"
+          ],
+          "membersExpression": "[Dim Date].[Month].Members"
+        },
+        {
+          "name": "Month Name",
+          "mdxExpression": "[Dim Date].[Month Name]",
+          "aliases": [
+            "month name"
+          ],
+          "membersExpression": "[Dim Date].[Month Name].Members"
+        },
+        {
+          "name": "Quarter",
+          "mdxExpression": "[Dim Date].[Quarter]",
+          "aliases": [
+            "quarter"
+          ],
+          "membersExpression": "[Dim Date].[Quarter].Members"
+        },
+        {
+          "name": "Year",
+          "mdxExpression": "[Dim Date].[Year]",
+          "aliases": [
+            "year"
+          ],
+          "membersExpression": "[Dim Date].[Year].Members"
+        }
+      ]
+    },
+    {
+      "name": "[Measures]",
+      "hierarchies": [
+        {
+          "name": "MeasuresLevel",
+          "mdxExpression": "[Measures]",
+          "aliases": [
+            "measureslevel"
+          ],
+          "membersExpression": "[Measures].Members"
+        },
+        {
+          "name": "MeasuresLevel",
+          "mdxExpression": "[Measures]",
+          "aliases": [
+            "measureslevel"
+          ],
+          "membersExpression": "[Measures].Members"
+        },
+        {
+          "name": "MeasuresLevel",
+          "mdxExpression": "[Measures]",
+          "aliases": [
+            "measureslevel"
+          ],
+          "membersExpression": "[Measures].Members"
+        },
+        {
+          "name": "MeasuresLevel",
+          "mdxExpression": "[Measures]",
+          "aliases": [
+            "measureslevel"
+          ],
+          "membersExpression": "[Measures].Members"
+        }
+      ]
+    },
+    {
+      "name": "[Document Dim]",
+      "hierarchies": [
+        {
+          "name": "Document",
+          "mdxExpression": "[Document Dim].[Document]",
+          "aliases": [
+            "document"
+          ],
+          "membersExpression": "[Document Dim].[Document].Members"
+        },
+        {
+          "name": "Tresorerie",
+          "mdxExpression": "[Document Dim].[Tresorerie]",
+          "aliases": [
+            "tresorerie"
+          ],
+          "membersExpression": "[Document Dim].[Tresorerie].Members"
+        },
+        {
+          "name": "Type AV",
+          "mdxExpression": "[Document Dim].[Type AV]",
+          "aliases": [
+            "type av"
+          ],
+          "membersExpression": "[Document Dim].[Type AV].Members"
+        },
+        {
+          "name": "Document",
+          "mdxExpression": "[Document Dim].[Document]",
+          "aliases": [
+            "document"
+          ],
+          "membersExpression": "[Document Dim].[Document].Members"
+        },
+        {
+          "name": "Tresorerie",
+          "mdxExpression": "[Document Dim].[Tresorerie]",
+          "aliases": [
+            "tresorerie"
+          ],
+          "membersExpression": "[Document Dim].[Tresorerie].Members"
+        },
+        {
+          "name": "Type AV",
+          "mdxExpression": "[Document Dim].[Type AV]",
+          "aliases": [
+            "type av"
+          ],
+          "membersExpression": "[Document Dim].[Type AV].Members"
+        }
+      ]
+    },
+    {
+      "name": "[Tiers Dim]",
+      "hierarchies": [
+        {
+          "name": "CF",
+          "mdxExpression": "[Tiers Dim].[CF]",
+          "aliases": [
+            "cf"
+          ],
+          "membersExpression": "[Tiers Dim].[CF].Members"
+        },
+        {
+          "name": "CRaisonSocial",
+          "mdxExpression": "[Tiers Dim].[CRaisonSocial]",
+          "aliases": [
+            "craisonsocial"
+          ],
+          "membersExpression": "[Tiers Dim].[CRaisonSocial].Members"
+        },
+        {
+          "name": "Tiers",
+          "mdxExpression": "[Tiers Dim].[Tiers]",
+          "aliases": [
+            "tiers"
+          ],
+          "membersExpression": "[Tiers Dim].[Tiers].Members"
+        },
+        {
+          "name": "CF",
+          "mdxExpression": "[Tiers Dim].[CF]",
+          "aliases": [
+            "cf"
+          ],
+          "membersExpression": "[Tiers Dim].[CF].Members"
+        },
+        {
+          "name": "CRaisonSocial",
+          "mdxExpression": "[Tiers Dim].[CRaisonSocial]",
+          "aliases": [
+            "craisonsocial"
+          ],
+          "membersExpression": "[Tiers Dim].[CRaisonSocial].Members"
+        },
+        {
+          "name": "Tiers",
+          "mdxExpression": "[Tiers Dim].[Tiers]",
+          "aliases": [
+            "tiers"
+          ],
+          "membersExpression": "[Tiers Dim].[Tiers].Members"
+        }
+      ]
+    }
+  ],
+
+  "sampleQueries": [
+    {
+      "question": "chiffre d'affaire par mois en 2024",
+      "mdx": "SELECT [Measures].[Doc Total HT] ON COLUMNS, [Dim Date].[Month Name].MEMBERS ON ROWS FROM [Dw-ing-pfe] WHERE ([Dim Date].[Year].[2024])"
+    },
+    {
+      "question": "profit par client",
+      "mdx": "SELECT [Measures].[Doc Total HT] - [Measures].[Doc P Revient] ON COLUMNS, [Tiers Dim].[Tiers].[Tiers].MEMBERS ON ROWS FROM [Dw-ing-pfe]"
+    },
+    {
+      "question": "cout total par année",
+      "mdx": "SELECT [Measures].[Doc P Revient] ON COLUMNS, [Dim Date].[Year].MEMBERS ON ROWS FROM [Dw-ing-pfe]"
+    },
+    {
+      "question": "revenue par produit en 2023",
+      "mdx": "SELECT [Measures].[Doc Total HT] ON COLUMNS, [Document Dim].[Document].MEMBERS ON ROWS FROM [Dw-ing-pfe] WHERE ([Dim Date].[Year].[2023])"
+    },
+    {
+      "question": "quantite vendue par categorie",
+      "mdx": "SELECT [Measures].[Doc Qte] ON COLUMNS, [Document Dim].[Type AV].MEMBERS ON ROWS FROM [Dw-ing-pfe]"
+    }
+  ]
+}
