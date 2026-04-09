@@ -1,26 +1,24 @@
-version: "3.8"
+version: "3.9"
 
 services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: zoubairmabrouk/fastapi-ollama:${IMAGE_TAG:-latest}
+    environment:
+      - OL_BASE_URL=http://ollama:11434/v1
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ollama
+
   ollama:
     image: ollama/ollama:latest
-    container_name: ollama
     ports:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-
-  web:
-    build:
-        context: .
-        dockerfile: Dockerfile
-    image: zoubairmabrouk/fastapi-ollama:latest
-    depends_on:
-      - ollama
-    environment:
-      - OL_BASE_URL=http://ollama:11434/v1
-      - OL_API_KEY=${OL_API_KEY}
-    ports:
-      - "8000:8000"
 
 volumes:
   ollama_data:

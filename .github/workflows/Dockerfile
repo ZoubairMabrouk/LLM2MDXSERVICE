@@ -1,23 +1,29 @@
-# === Base pour ton backend Python ===
+# === Backend Python image ===
 FROM python:3.12-slim
 
-# Variables (pas de secret sensible ici)
-ENV OL_BASE_URL=http://ollama:11434/v1
+# Environment variables (no secrets here)
+ENV OL_BASE_URL=http://ollama:11434/v1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
-# Dépendances système
+# System dependencies
 RUN apt-get update && \
-    apt-get install -y git curl && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Copier l’application
+# Set working directory
 WORKDIR /app
-COPY ../app/ /app/          # <-- ../app car Dockerfile est dans docker/
 
-# Installer les dépendances Python
+# Install Python dependencies first (layer cache optimization)
+COPY app/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Entrypoint
-COPY entrypoint.sh /entrypoint.sh   # <-- déjà dans le même dossier Dockerfile
+# Copy application source
+COPY app/ /app/
+
+# Copy and prepare entrypoint
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000
