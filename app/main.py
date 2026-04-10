@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from typing import Optional
 
 from openai import OpenAI
-from rag_service_olap import RAGServiceOLAP
+from app.rag_service_olap import RAGServiceOLAP
 import json
 
 
@@ -26,7 +26,7 @@ class BaseLLMClient:
         self._model = model
         self._temperature = temperature
         self._client = OpenAI(
-            base_url="http://localhost:11434/v1",
+            base_url="http://ollama:11434/v1",
             api_key="ollama"
         )
 

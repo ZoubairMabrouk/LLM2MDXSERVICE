@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Dict, Any
 
-from rag_service_olap import RAGServiceOLAP
+from app.rag_service_olap import RAGServiceOLAP
 
 import json
 
