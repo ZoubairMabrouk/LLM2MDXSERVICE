@@ -1,9 +1,11 @@
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 
 from openai import OpenAI
-from app.rag_service_olap import RAGServiceOLAP
+from rag_service_olap import RAGServiceOLAP
 import json
 
 
@@ -21,44 +23,58 @@ rag = RAGServiceOLAP()
 # =========================
 # LLM CLIENT
 # =========================
+import requests
+
+
 class BaseLLMClient:
-    def __init__(self, model: str = "phi3:mini", temperature: float = 0.1):
+    def __init__(self, model: str = "phi3:mini", temperature: float = 0.0):
         self._model = model
         self._temperature = temperature
-        self._client = OpenAI(
-            base_url="http://ollama:11434/v1",
-            api_key="ollama"
-        )
+        self._url = "http://51.68.44.166:11434/api/chat"
 
     def call(self, prompt: str) -> str:
         try:
-            response = self._client.chat.completions.create(
-                model=self._model,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are an OLAP expert. "
-                            "Generate ONLY a valid MDX query. "
-                            "Do NOT explain. Do NOT add text. ONLY return MDX."
-                        )
-                    },
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.0,
-                max_tokens=200
+            print("🚀 Sending request to Ollama...")
+
+            response = requests.post(
+                self._url,
+                json={
+                    "model": self._model,
+                    "messages": [
+                        {"role": "system", "content": "Generate ONLY MDX."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "stream": False,
+                    "keep_alive": "15m"
+                },
+                timeout=120
             )
 
-            return response.choices[0].message.content.strip()
+            print("📥 Response received from Ollama")
+
+            response.raise_for_status()
+
+            data = response.json()
+
+            return data["message"]["content"].strip()
 
         except Exception as e:
+            print("❌ ERROR:", str(e))
             raise RuntimeError(f"LLM API call failed: {e}")
-
 
 # =========================
 # FASTAPI INIT
 # =========================
 app = FastAPI(title="LLM + RAG API", version="2.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
 
 client = BaseLLMClient()
 
@@ -73,9 +89,7 @@ def startup():
     print("✅ RAG ready")
 
 
-# =========================
-# REQUEST / RESPONSE
-# =========================
+
 class PromptRequest(BaseModel):
     prompt: str
     top_k: Optional[int] = 10
@@ -119,17 +133,24 @@ Rules:
 def ask(request: PromptRequest):
     try:
         # 🔍 Step 1: RAG
+        i = datetime.now().isoformat()
+        print(f"[{i}] 🔍 Searching RAG for: {request.prompt}")
         rag_results = rag.search(request.prompt, request.top_k)
 
         if not rag_results:
             raise HTTPException(status_code=400, detail="No context found")
 
         # 🧠 Step 2: Build enriched prompt
+        i = datetime.now().isoformat()
+        print(f"[{i}] 🧠 Building enriched prompt")
         prompt = build_rag_prompt(request.prompt, rag_results)
 
         # 🤖 Step 3: LLM call
+        i = datetime.now().isoformat()
+        print(f"[{i}] 🤖 Calling LLM")
         mdx_query = client.call(prompt)
-
+        i = datetime.now().isoformat()
+        print(f"[{i}] ✅ LLM response received")
         if not mdx_query:
             raise HTTPException(status_code=500, detail="Empty LLM response")
 

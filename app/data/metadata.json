@@ -1,6 +1,6 @@
 {
   "cubeName": "CUBE-DOCUMENT",
-  "connectionString": "Data Source=localhost;Catalog=SalesDB;",
+  "connectionString": "Data Source=localhost;Catalog=ing-pfe-dw;",
   "measures": [
     {
       "name": "Dim Date",
