@@ -570,6 +570,10 @@
       "mdx": "SELECT [Measures].[Doc Total HT] ON COLUMNS, [Dim Date].[Month Name].MEMBERS ON ROWS FROM [Dw-ing-pfe] WHERE ([Dim Date].[Year].[2024])"
     },
     {
+      "question": "revenue par mois en 2024",
+      "mdx": "SELECT [Measures].[Doc Total HT] ON COLUMNS, NON EMPTY DESCENDANTS( FILTER([Dim Date].[Hiérarchie].[Year].MEMBERS, LEFT([Dim Date].[Hiérarchie].CURRENTMEMBER.NAME, 4) = '2024'), [Dim Date].[Hiérarchie].[Month Name]) ON ROWS FROM [Dw-ing-pfe];"
+    },
+    {
       "question": "profit par client",
       "mdx": "SELECT [Measures].[Doc Total HT] - [Measures].[Doc P Revient] ON COLUMNS, [Tiers Dim].[Tiers].[Tiers].MEMBERS ON ROWS FROM [Dw-ing-pfe]"
     },
