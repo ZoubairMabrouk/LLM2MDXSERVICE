@@ -1,3 +1,5 @@
+import requests
+
 import chromadb
 from chromadb.utils import embedding_functions
 from typing import List, Dict, Any
@@ -126,8 +128,6 @@ class RAGServiceOLAP:
             })
 
         return output
-
-import requests
 
 
 class BIChatbotService:

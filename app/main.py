@@ -1,12 +1,14 @@
 from datetime import datetime
+
+import json
+import requests
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 
-from openai import OpenAI
 from rag_service_olap import RAGServiceOLAP
-import json
 
 
 # =========================
@@ -23,9 +25,6 @@ rag = RAGServiceOLAP()
 # =========================
 # LLM CLIENT
 # =========================
-import requests
-
-
 class BaseLLMClient:
     def __init__(self, model: str = "phi3:mini", temperature: float = 0.0):
         self._model = model
@@ -62,6 +61,7 @@ class BaseLLMClient:
             print("❌ ERROR:", str(e))
             raise RuntimeError(f"LLM API call failed: {e}")
 
+
 # =========================
 # FASTAPI INIT
 # =========================
@@ -75,7 +75,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-
 client = BaseLLMClient()
 
 
@@ -87,7 +86,6 @@ def startup():
     cube = load_cube()
     rag.index_cube(cube)
     print("✅ RAG ready")
-
 
 
 class PromptRequest(BaseModel):

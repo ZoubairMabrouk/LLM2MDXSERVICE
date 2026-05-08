@@ -1,15 +1,17 @@
+import json
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Dict, Any
 
 from rag_service_olap import RAGServiceOLAP
 
-import json
 
 def load_cube_from_file(path: str):
     with open(path, "r", encoding="utf-8") as f:
         data = json.load(f)
     return data
+
 
 cube = load_cube_from_file("./data/metadata.json")
 app = FastAPI(title="RAG OLAP Service")
