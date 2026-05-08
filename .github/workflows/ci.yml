@@ -23,11 +23,17 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
-          cache-dependency-path: app/requirements.txt
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('app/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: pip install --no-cache-dir -r app/requirements.txt flake8 pytest httpx
+        run: pip install -r app/requirements.txt flake8 pytest httpx
 
       - name: Lint (flake8)
         run: flake8 app/ --max-line-length=120 --extend-ignore=E501
