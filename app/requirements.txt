@@ -2,6 +2,7 @@ fastapi
 uvicorn[standard]
 pydantic
 openai
+requests
 sentence-transformers
 faiss-cpu
 numpy
