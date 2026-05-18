@@ -167,7 +167,7 @@ jobs:
             docker run -d \
               --name chat-service \
               --restart unless-stopped \
-              -p 8085:8000 \
+              -p 8082:8000 \
               ghcr.io/zoubairmabrouk/chat-service:latest
 
             echo "Deployment completed successfully"
