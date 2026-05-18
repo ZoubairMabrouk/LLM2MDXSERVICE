@@ -1,8 +1,12 @@
 # === Base pour ton backend Python ===
-FROM python:3.12-slim
+ARG PYTHON_VERSION=3.12
+ARG BUILD_VERSION=dev
+FROM python:${PYTHON_VERSION}-slim
 
 # Variables (pas de secret sensible ici)
-ENV OL_BASE_URL=http://ollama:11434/v1
+ENV OL_BASE_URL=http://51.68.44.166:11434/api/chat
+
+LABEL org.opencontainers.image.version=${BUILD_VERSION}
 
 # Dépendances système
 RUN apt-get update && \
@@ -17,7 +21,7 @@ COPY app/ /app/
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Entrypoint
-COPY docker/entrypoint.sh /entrypoint.sh
+COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 EXPOSE 8000

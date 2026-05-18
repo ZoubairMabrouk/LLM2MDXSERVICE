@@ -1,12 +1,13 @@
 from datetime import datetime
+import json
+import os
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
 
-from openai import OpenAI
 from rag_service_olap import RAGServiceOLAP
-import json
 
 
 # =========================
@@ -30,7 +31,10 @@ class BaseLLMClient:
     def __init__(self, model: str = "phi3:mini", temperature: float = 0.0):
         self._model = model
         self._temperature = temperature
-        self._url = "http://51.68.44.166:11434/api/chat"
+        self._url = os.environ.get(
+            "OL_BASE_URL",
+            "http://51.68.44.166:11434/api/chat"
+        )
 
     def call(self, prompt: str) -> str:
         try:
